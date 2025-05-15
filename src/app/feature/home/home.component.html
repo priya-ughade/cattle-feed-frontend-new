@@ -1,0 +1,41 @@
+<div class="carousel-container">
+    <!-- <button class="prev-button" (click)="prevSlide()"> &#8249; </button>
+    <img [src]="images[currentIndex]" alt="slide image">
+    <p>{{currentIndex}}</p>
+    <button class="next-button" (click)="nextSlide()"> &#8250; </button> -->
+    <!-- <div class="carousel-slide">
+        <img *ngFor="let image of images" [src]="image" alt="img1">
+
+    </div> -->
+    <!-- <div class="dots">
+        <span *ngFor="let image of images; let i = index" (click)="currentIndex = i"
+            [class.active]="i === currentIndex"></span>
+    </div> -->
+
+    <!-- <div>
+        <div class="slider-frame">
+            <div class="slide-image">
+                <div class="img-container">
+                    <img src="assets/img1.jpg" alt="">
+                </div>
+                 <div class="img-container">
+                    <img src="assets/img2.jpg" alt="">
+                </div>
+                 <div class="img-container">
+                    <img src="assets/img3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+
+<!-- image-slider.component.html -->
+<div class="slider-wrapper">
+  <div
+    class="slider-track"
+    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+    [style.transition]="transitionStyle"
+  >
+    <img *ngFor="let img of images" [src]="img" class="slide-img" />
+  </div>
+</div>
