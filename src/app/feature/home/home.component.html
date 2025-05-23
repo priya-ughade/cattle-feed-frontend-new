@@ -1,41 +1,90 @@
-<div class="carousel-container">
-    <!-- <button class="prev-button" (click)="prevSlide()"> &#8249; </button>
-    <img [src]="images[currentIndex]" alt="slide image">
-    <p>{{currentIndex}}</p>
-    <button class="next-button" (click)="nextSlide()"> &#8250; </button> -->
-    <!-- <div class="carousel-slide">
-        <img *ngFor="let image of images" [src]="image" alt="img1">
-
-    </div> -->
-    <!-- <div class="dots">
-        <span *ngFor="let image of images; let i = index" (click)="currentIndex = i"
-            [class.active]="i === currentIndex"></span>
-    </div> -->
-
-    <!-- <div>
-        <div class="slider-frame">
-            <div class="slide-image">
-                <div class="img-container">
-                    <img src="assets/img1.jpg" alt="">
-                </div>
-                 <div class="img-container">
-                    <img src="assets/img2.jpg" alt="">
-                </div>
-                 <div class="img-container">
-                    <img src="assets/img3.jpg" alt="">
-                </div>
+<!-- image-slider.component.html -->
+<section>
+    <div class="slider-wrapper">
+        <div class="slider-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+            [style.transition]="transitionStyle">
+            <img *ngFor="let img of images" [src]="img" class="slide-img" />
+        </div>
+        <div class="overlay-text">
+            <div class="main-wrapper">
+                <a href="">Home</a>
+                <a href="">About Us</a>
+                <a href="">Product</a>
+                <a href="">Contact Us</a>
             </div>
         </div>
-    </div> -->
-</div>
+    </div>
+</section>
 
-<!-- image-slider.component.html -->
-<div class="slider-wrapper">
-  <div
-    class="slider-track"
-    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
-    [style.transition]="transitionStyle"
-  >
-    <img *ngFor="let img of images" [src]="img" class="slide-img" />
-  </div>
-</div>
+
+<section class="hero">
+    <div class="container">
+        <h1>Premium Quality Cattle Feed</h1>
+        <p>Healthy Nutrition for Healthier Livestock — Boost Milk Production & Growth</p>
+        <button class="btn-primary">Explore Products</button>
+    </div>
+</section>
+
+
+<section class="about container">
+    <h2>About Shrirang Cattle Feed</h2>
+    <p>
+        Established in 2011, Shrirang Cattle Feed Industries is an ISO 9001:2015 certified manufacturer dedicated to
+        producing high-quality cattle feed products across India.
+    </p>
+    <div class="stats">
+        <div class="stat-item">Founded: 2011</div>
+        <div class="stat-item">ISO Certified</div>
+        <div class="stat-item">50+ Employees</div>
+        <div class="stat-item">All India Distribution</div>
+    </div>
+</section>
+
+<section class="products container">
+    <h2>Our Products</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80"
+                alt="Pellet Cattle Feed" />
+            <div class="product-content">
+                <h3>Pellet Cattle Feed</h3>
+                <p>Shrirang Special, Santulit Pellet, Super Pellet, Milk Manthan & more.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=600&q=80"
+                alt="Mash Cattle Feed" />
+            <div class="product-content">
+                <h3>Mash Cattle Feed</h3>
+                <p>Neelkamal, Gopala, Super Milk, Santulit Malai and other variants.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1574169208507-8437617483d6?auto=format&fit=crop&w=600&q=80"
+                alt="Cotton Seed Cake" />
+            <div class="product-content">
+                <h3>Cotton Seed Cake</h3>
+                <p>Binaula Khal - high-quality cotton seed by-product for cattle nutrition.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quality">
+    <h2>Quality Assurance & Benefits</h2>
+    <ul>
+        <li>Pure, high-quality raw materials</li>
+        <li>Improves digestion & feed efficiency</li>
+        <li>Enhances milk production & weight gain</li>
+        <li>Boosts immunity & reduces feed wastage</li>
+    </ul>
+</section>
+
+<section class="packaging container">
+    <h2>Packaging & Distribution</h2>
+    <p>Our cattle feed comes in 50 kg PP laminated bags with a shelf life of 3-4 months. We supply all across India
+        ensuring timely delivery.</p>
+</section>
