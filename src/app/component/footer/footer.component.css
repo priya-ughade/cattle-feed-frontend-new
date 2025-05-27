@@ -1,0 +1,33 @@
+/* .footer{
+    background-color: #222;
+  color: #ddd;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 10px;
+} */
+
+section{
+  display: flex ;
+  align-items: center;
+
+}
+.footer-section ,section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-section p,h1,.footer-bottom{
+  font-size: 12px;
+  margin-right: 10px;
+}

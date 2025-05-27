@@ -14,11 +14,13 @@ export class HomeComponent {
   intervalTime: any = 10000; // Time in milliseconds between image transitions
   currentIndex: any = 0;
   images = [
+    'assets/img1.jpg',
+    'assets/img2.jpg',
     'assets/img3.jpg',
-    ];
+  ];
 
-// 'assets/img2.jpg',
-//     'assets/img3.jpg',
+  // 'assets/img2.jpg',
+  //     'assets/img3.jpg',
 
   transitionStyle = 'transform 0.5s ease-in-out';
   private animationFrameId: number = 0;

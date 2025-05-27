@@ -1,0 +1,86 @@
+<div class="admin-container">
+    <aside class="sidebar">
+        <h1>Admin Panel</h1>
+        <ul>
+            <li (click)="selectSection('dashboard')" [class.active]="selectedSection =='dashboard'"> Dashboard</li>
+            <li (click)="selectSection('product')" [class.active]="selectedSection =='product'"> Product</li>
+            <li (click)="selectSection('user')" [class.active]="selectedSection =='user'"> User</li>
+        </ul>
+    </aside>
+
+    <div class="main-content">
+        <header class="header">
+            <p>{{ selectedSection | titlecase }}</p>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </header>
+
+        <section class="content">
+            <!-- Different content based on selected section -->
+            <ng-container [ngSwitch]="selectedSection">
+                <div *ngSwitchCase="'product'">
+                    <h3>Product List</h3>
+
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price ($)</th>
+                                <th>Stock</th>
+                                <th>add</th>
+                                <th>Edit</th>
+                                <th>delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.stock }}</td>
+                                <td>add</td>
+                                <td>✏️</td>
+                                <td>🗑️</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngSwitchCase="'dashboard'">
+                    <h3>Welcome to the dashboard!</h3>
+                    <p>Overview and stats here.</p>
+                </div>
+                <div *ngSwitchCase="'users'">
+                    <h3>User Management</h3>
+                    <label>
+                        Search Users:
+                        <input type="text" [(ngModel)]="userSearch" placeholder="Enter username or email" />
+                    </label>
+                    <p>Search term: {{ userSearch }}</p>
+                </div>
+                <div *ngSwitchCase="'settings'">
+                    <h3>Application Settings</h3>
+                    <label for="siteName">Site Name:</label>
+                    <input id="siteName" type="text" [(ngModel)]="settings.siteName" />
+
+                    <label for="maintenanceMode">Maintenance Mode:</label>
+                    <select id="maintenanceMode" [(ngModel)]="settings.maintenanceMode">
+                        <option [value]="true">On</option>
+                        <option [value]="false">Off</option>
+                    </select>
+
+                    <pre>{{ settings | json }}</pre>
+                </div>
+                <div *ngSwitchCase="'reports'">
+                    <h3>Reports Section</h3>
+                    <p>Reports will be shown here.</p>
+                </div>
+                <div *ngSwitchDefault>
+                    <p>Select a section from the sidebar.</p>
+                </div>
+            </ng-container>
+        </section>
+    </div>
+
+</div>
