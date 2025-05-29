@@ -18,31 +18,40 @@
             <!-- Different content based on selected section -->
             <ng-container [ngSwitch]="selectedSection">
                 <div *ngSwitchCase="'product'">
-                    <h3>Product List</h3>
+                    <div class="product-add" style="display: flex;justify-content: space-between;">
+                        <h3>Product List</h3>
+                        <button (click)="addData()">Add</button>
+                    </div>
 
                     <table class="admin-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Category</th>
+                                <th>Type</th>
                                 <th>Price ($)</th>
                                 <th>Stock</th>
-                                <th>add</th>
+                                <th>Fiber</th>
+                                <th>Fat</th>
+                                <th>Protien</th>
+                                <th>Description</th>
                                 <th>Edit</th>
                                 <th>delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let product of products">
-                                <td>{{ product.id }}</td>
-                                <td>{{ product.name }}</td>
-                                <td>{{ product.category }}</td>
-                                <td>{{ product.price }}</td>
-                                <td>{{ product.stock }}</td>
-                                <td>add</td>
+                                <td>{{ product.productId }}</td>
+                                <td>{{ product.productName }}</td>
+                                <td>{{ product.productType }}</td>
+                                <td>{{ product.productPrice }}</td>
+                                <td>{{ product.productStockQty }}</td>
+                                <td>{{product.productFiber}}</td>
+                                <td>{{product.productFat}}</td>
+                                <td>{{product.productProtein}}</td>
+                                <td>{{product.productDescription}}</td>
                                 <td>✏️</td>
-                                <td>🗑️</td>
+                                <td ><button (click)="onDelete(product.productId)">🗑️</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,4 +92,62 @@
         </section>
     </div>
 
+</div>
+
+
+<div *ngIf="isPopupVisible" class="popup-overlay">
+    <div class="popup-content">
+        <h2 mat-dialog-title>Add Product</h2>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+            <mat-dialog-content>
+                <div class="form-row">
+                    <div class="form-group">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput formControlName="productName" />
+                    </div>
+                    <div class="form-group">
+                        <mat-label>Type</mat-label>
+                        <input matInput formControlName="productType">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="productPrice" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <mat-label>Stock Quantity</mat-label>
+                        <input matInput formControlName="productStockQty" type="number" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <mat-label>Fiber</mat-label>
+                        <input matInput formControlName="productFiber" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <mat-label>Fat</mat-label>
+                        <input matInput formControlName="productFat" type="number" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <mat-label>Protein</mat-label>
+                        <input matInput formControlName="productProtein" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <mat-label>Description</mat-label>
+                        <input matInput formControlName="productDescription" type="text" />
+                    </div>
+                </div>
+            </mat-dialog-content>
+
+            <mat-dialog-actions>
+                <button mat-button>Cancel</button>
+                <button mat-button type="submit" [disabled]="productForm.invalid">Add</button>
+            </mat-dialog-actions>
+        </form>
+        <button (click)="closePopup()">Close</button>
+    </div>
 </div>
